@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Registration Confirmed! - Free Fire Ultimate Battle</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Montserrat:wght@400;600;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            color: #f0f0f0;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        #dynamic-background-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at top right, rgba(255, 107, 53, 0.2), transparent 30%),
+                        radial-gradient(circle at bottom left, rgba(0, 168, 232, 0.2), transparent 30%);
+            z-index: -1;
+        }
+
+        .app-header {
+            text-align: center;
+            padding: 30px 20px 20px;
+            background: rgba(26, 26, 46, 0.8);
+            border-bottom: 2px solid #ff6b35;
+        }
+
+        .app-header h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            background: linear-gradient(to right, #ff6b35, #00a8e8);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #ccc;
+        }
+
+        .app-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+
+        .confirmation-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .confirmation-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(to right, #ff6b35, #00a8e8);
+        }
+
+        .success {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #ffcc00;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .animated-icon {
+            color: #4caf50;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .confirmation-card p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+
+        .confirmation-card strong {
+            color: #ffcc00;
+        }
+
+        .back-home-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 25px;
+            margin-top: 20px;
+            background: linear-gradient(to right, #ff6b35, #e55a2b);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+        }
+
+        .back-home-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 107, 53, 0.5);
+        }
+
+        .glow {
+            animation: glow 2s infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                box-shadow: 0 0 10px -10px #ffcc00;
+            }
+            to {
+                box-shadow: 0 0 10px 10px rgba(255, 204, 0, 0.1);
+            }
+        }
+
+        .app-footer {
+            text-align: center;
+            padding: 20px;
+            background: rgba(26, 26, 46, 0.8);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .app-footer p {
+            margin-bottom: 15px;
+            color: #aaa;
+        }
+
+        .footer-link-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin: 0 10px;
+            padding: 8px 15px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #f0f0f0;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .footer-link-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .whatsapp-button {
+            background: rgba(37, 211, 102, 0.2);
+        }
+
+        .whatsapp-button:hover {
+            background: rgba(37, 211, 102, 0.3);
+        }
+
+        #backToTopBtn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #ff6b35;
+            color: white;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            display: none;
+        }
+
+        #backToTopBtn:hover {
+            background: #e55a2b;
+            transform: translateY(-3px);
+        }
+
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: #ffcc00;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        .congratulations-popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.5s ease;
+        }
+
+        .congratulations-popup.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .popup-content {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+            border: 2px solid #ffcc00;
+            box-shadow: 0 0 30px rgba(255, 204, 0, 0.3);
+            position: relative;
+        }
+
+        .popup-content h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #ffcc00;
+        }
+
+        .popup-content p {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        .payment-status {
+            margin: 20px 0;
+            padding: 15px;
+            border-radius: 8px;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .payment-success {
+            border-left: 4px solid #4caf50;
+        }
+
+        .payment-failure {
+            border-left: 4px solid #f44336;
+        }
+
+        @media (max-width: 600px) {
+            .app-header h1 {
+                font-size: 2rem;
+            }
+            
+            .success {
+                font-size: 1.5rem;
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .confirmation-card {
+                padding: 20px;
+            }
+            
+            .footer-link-button {
+                display: block;
+                margin: 10px auto;
+                width: fit-content;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="dynamic-background-overlay"></div>
+    <div id="confetti-container"></div>
+
+    <!-- Congratulations Popup -->
+    <div class="congratulations-popup" id="congratulationsPopup">
+        <div class="popup-content">
+            <h2>CONGRATULATIONS!</h2>
+            <p>Your payment was successful and your squad has been registered</p>
+            <div class="payment-status payment-success">
+                <i class="fas fa-check-circle" style="color: #4caf50; font-size: 2rem;"></i>
+                <p>Payment Status: <strong>Completed</strong></p>
+            </div>
+            <button class="back-home-button" onclick="closePopup()">
+                <span class="button-icon"><i class="fas fa-thumbs-up"></i></span>
+                <span class="button-text">Continue</span>
+            </button>
+        </div>
+    </div>
+
+    <header class="app-header">
+        <h1>Registration Successfully</h1>
+        <p class="subtitle">Now Your Squad Is In the Tournament</p>
+    </header>
+
+    <main class="app-container">
+        <section class="confirmation-card">
+            <h2 class="success"><i class="fas fa-check-circle animated-icon"></i> Registration Confirmed!</h2>
+            <p>Congratulations, <strong id="displayTeamName">Your Squad</strong>!</p>
+            <div class="payment-status payment-success">
+                <i class="fas fa-check-circle" style="color: #4caf50;"></i>
+                Payment verified successfully!
+            </div>
+            <p id="what-next-message">
+                Your registration is being processed. In a live system, your <strong>unique Squad Number</strong> will be sent to your registered Mobile Number Within 24 hrs
+            </p>
+            <p>Good Luck On The Battlefield</p>
+            <a href="index.html" class="back-home-button glow">
+                <span class="button-icon"><i class="fas fa-home"></i></span>
+                <span class="button-text">Back to Home</span>
+            </a>
+        </section>
+    </main>
+
+    <footer class="app-footer">
+        <p>&copy; 2025 ULTIMATE BATTLE. All rights reserved.</p>
+        <a href="about.html" class="footer-link-button"><i class="fas fa-info-circle"></i> About Us</a>
+        <a href="https://chat.whatsapp.com/FHeYVSKOiOwJTgdJwiYTuD?mode=ac_t" target="_blank" class="footer-link-button whatsapp-button">
+            <i class="fab fa-whatsapp"></i> Join us on WhatsApp
+        </a>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTopBtn" title="Go to top"><i class="fas fa-chevron-up"></i></button>
+
+    <script>
+        // Function to create confetti
+        function createConfetti() {
+            const colors = ['#ff6b35', '#00a8e8', '#ffcc00', '#4caf50', '#9c27b0'];
+            const container = document.getElementById('confetti-container');
+            
+            for (let i = 0; i < 150; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.width = (Math.random() * 10 + 5) + 'px';
+                confetti.style.height = (Math.random() * 10 + 5) + 'px';
+                
+                container.appendChild(confetti);
+                
+                // Animate confetti
+                const animation = confetti.animate([
+                    { 
+                        opacity: 1,
+                        transform: 'translateY(0) rotate(0)',
+                    },
+                    { 
+                        opacity: 1,
+                        transform: `translateY(100vh) translateX(${Math.random() * 200 - 100}px) rotate(${Math.random() * 360}deg)`,
+                    }
+                ], {
+                    duration: Math.random() * 3000 + 2000,
+                    easing: 'cubic-bezier(0.1, 0.8, 0.3, 1)',
+                });
+                
+                animation.onfinish = () => {
+                    confetti.remove();
+                };
+            }
+        }
+
+        // Show congratulations popup
+        function showCongratulations() {
+            const popup = document.getElementById('congratulationsPopup');
+            popup.classList.add('active');
+            createConfetti();
+            
+            // Auto close after 4.5 seconds
+            setTimeout(() => {
+                closePopup();
+            }, 4500);
+        }
+
+        // Close popup
+        function closePopup() {
+            const popup = document.getElementById('congratulationsPopup');
+            popup.classList.remove('active');
+        }
+
+        // Back to top button
+        const backToTopBtn = document.getElementById('backToTopBtn');
+        
+        window.onscroll = function() {
+            if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+                backToTopBtn.style.display = "block";
+            } else {
+                backToTopBtn.style.display = "none";
+            }
+        };
+        
+        backToTopBtn.addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Get URL parameters
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const teamName = urlParams.get('teamName');
+            const paymentStatus = urlParams.get('payment');
+            const uniqueNo = urlParams.get('uniqueNo');
+
+            if (teamName) {
+                document.getElementById('displayTeamName').textContent = teamName;
+            }
+
+            if (paymentStatus === 'success') {
+                // Show congratulations popup if payment was successful
+                setTimeout(showCongratulations, 500);
+            }
+
+            const whatNextMessage = document.getElementById('what-next-message');
+            if (uniqueNo && uniqueNo !== 'N/A') {
+                whatNextMessage.innerHTML = `Your unique Squad Number is: <strong>${uniqueNo}</strong>. Please check your email for full details and instructions to join the tournament Discord/WhatsApp group.`;
+            }
+        });
+    </script>
+</body>
+</html>

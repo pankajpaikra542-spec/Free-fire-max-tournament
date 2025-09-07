@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Free Fire Ultimate Battle Tournament</title>
+    <!-- Google Fonts: Open Sans (Sans Serif) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Base Styles */
+        :root {
+            --primary-color: #ff6b35; /* Orange */
+            --accent-color: #00a8e8; /* Blue */
+            --secondary-accent-color: #ffcc00; /* Yellow */
+            --dark-color: #1a1a2e;
+            --text-color-light: #f0f0f0;
+            --card-bg: rgba(255, 255, 255, 0.1);
+            --card-border: rgba(255, 255, 255, 0.15);
+            --shadow-light: rgba(0, 0, 0, 0.1);
+            --shadow-medium: rgba(0, 0, 0, 0.2);
+            --shadow-strong: rgba(0, 0, 0, 0.3);
+            
+            /* Fluid Typography */
+            --font-size-base: clamp(0.9rem, 2vw + 0.1rem, 1.125rem);
+            --font-size-h1: clamp(2rem, 7vw, 3.5rem);
+            --font-size-h2: clamp(1.4rem, 4.5vw, 2.5rem);
+            --font-size-h3: clamp(1.1rem, 3.2vw, 1.8rem);
+            --font-size-subtitle: clamp(0.85rem, 2.5vw, 1.3em);
+            
+            /* Spacing */
+            --spacing-xs: clamp(0.5rem, 1.5vw, 0.75rem);
+            --spacing-sm: clamp(0.8rem, 2vw, 1.25rem);
+            --spacing-md: clamp(1.2rem, 2.5vw, 2rem);
+            --spacing-lg: clamp(1.8rem, 3.5vw, 2.5rem);
+            --spacing-xl: clamp(2.2rem, 5vw, 3rem);
+            
+            /* Page Horizontal Padding */
+            --page-horizontal-padding-mobile: 1.2rem;
+            --page-horizontal-padding-tablet: 1.8rem;
+            --page-horizontal-padding-desktop: 2.5rem;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: var(--text-color-light);
+            background: linear-gradient(-45deg, #1a1a2e, #16213e, #0f3460, #0a2647);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            min-height: 100vh;
+            overflow-x: hidden;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Gradient Overlay */
+        .gradient-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 15% 50%, rgba(255, 107, 53, 0.3) 0%, transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(0, 168, 232, 0.3) 0%, transparent 25%),
+                radial-gradient(circle at 50% 80%, rgba(255, 204, 0, 0.2) 0%, transparent 25%);
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.7;
+        }
+
+        /* Header Styles */
+        .app-header {
+            background: rgba(26, 26, 46, 0.8);
+            backdrop-filter: blur(10px);
+            padding: var(--spacing-md) var(--page-horizontal-padding-mobile);
+            text-align: center;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+            border-bottom: 2px solid var(--primary-color);
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .app-header h1 {
+            font-size: var(--font-size-h1);
+            font-weight: 800;
+            margin-bottom: var(--spacing-xs);
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-accent-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .app-header .subtitle {
+            font-size: var(--font-size-subtitle);
+            color: #a0a0c0;
+            font-weight: 600;
+        }
+
+        /* Main Container */
+        .app-container {
+            padding: var(--spacing-md) var(--page-horizontal-padding-mobile);
+            max-width: 1200px;
+            margin: var(--spacing-md) auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+
+        /* About Us Card */
+        .about-us-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            padding: var(--spacing-md);
+            border-radius: 16px;
+            box-shadow: 0 10px 30px var(--shadow-strong);
+            border: 1px solid var(--card-border);
+            width: 100%;
+            max-width: 800px;
+        }
+
+        h2 {
+            font-size: var(--font-size-h2);
+            font-weight: 700;
+            margin-bottom: var(--spacing-md);
+            text-align: center;
+            color: var(--text-color-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        h2 i {
+            color: var(--accent-color);
+        }
+
+        .about-us-card p {
+            margin-bottom: var(--spacing-md);
+            line-height: 1.7;
+            text-align: justify;
+        }
+
+        .about-us-card strong {
+            color: var(--secondary-accent-color);
+            font-weight: 700;
+        }
+
+        /* Back Home Button */
+        .back-home-button {
+            font-family: 'Open Sans', sans-serif;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-accent-color));
+            color: white;
+            padding: var(--spacing-sm) var(--spacing-lg);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: clamp(1rem, 2.5vw + 0.2rem, 1.2rem);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: fit-content;
+            margin: var(--spacing-md) auto 0;
+            text-decoration: none;
+            box-shadow: 0 5px 15px rgba(255, 107, 53, 0.4);
+            position: relative;
+            overflow: hidden;
+            min-height: 50px;
+        }
+
+        .back-home-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 107, 53, 0.6);
+        }
+
+        .back-home-button .button-icon {
+            margin-right: 10px;
+        }
+
+        /* Footer */
+        .app-footer {
+            background: rgba(26, 26, 46, 0.8);
+            backdrop-filter: blur(10px);
+            padding: var(--spacing-sm) var(--page-horizontal-padding-mobile);
+            text-align: center;
+            color: #a0a0c0;
+            margin-top: auto;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .footer-link-button {
+            background-color: transparent;
+            border: 1px solid var(--accent-color);
+            color: var(--accent-color);
+            padding: 10px 18px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            min-height: 44px;
+        }
+
+        .footer-link-button:hover {
+            background-color: var(--accent-color);
+            color: #fff;
+        }
+
+        .footer-link-button.whatsapp-button {
+            border-color: #25d366;
+            color: #25d366;
+        }
+
+        .footer-link-button.whatsapp-button:hover {
+            background-color: #25d366;
+            color: #fff;
+        }
+
+        /* Back to Top Button */
+        #backToTopBtn {
+            display: none;
+            position: fixed;
+            bottom: var(--spacing-md);
+            right: var(--spacing-md);
+            z-index: 1000;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 1.2em;
+            line-height: 50px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        #backToTopBtn:hover {
+            background-color: var(--secondary-accent-color);
+            transform: translateY(-3px);
+        }
+
+        /* Responsive Design */
+        @media (min-width: 768px) {
+            .app-header {
+                padding: var(--spacing-lg) var(--page-horizontal-padding-tablet);
+            }
+            
+            .app-container {
+                padding: var(--spacing-lg) var(--page-horizontal-padding-tablet);
+            }
+            
+            .app-footer {
+                flex-direction: row;
+                justify-content: space-between;
+                padding: var(--spacing-md) var(--page-horizontal-padding-tablet);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .app-header {
+                padding: var(--spacing-xl) var(--page-horizontal-padding-desktop);
+            }
+            
+            .app-container {
+                padding: var(--spacing-xl) var(--page-horizontal-padding-desktop);
+            }
+            
+            .app-footer {
+                padding: var(--spacing-md) var(--page-horizontal-padding-desktop);
+            }
+        }
+
+        /* Mobile-specific adjustments */
+        @media (max-width: 480px) {
+            :root {
+                --page-horizontal-padding-mobile: 1rem;
+            }
+            
+            .back-home-button {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            h2 {
+                flex-direction: column;
+                gap: 5px;
+            }
+            
+            .about-us-card p {
+                text-align: left;
+            }
+        }
+
+        /* Touch-friendly sizes for mobile */
+        @media (hover: none) and (pointer: coarse) {
+            .back-home-button, .footer-link-button {
+                min-height: 44px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="gradient-overlay"></div>
+
+    <header class="app-header">
+        <h1>ABOUT ULTIMATE BATTLE</h1>
+        <p class="subtitle">Our mission: Make This Platform A Gaming Site</p>
+    </header>
+
+    <main class="app-container">
+        <section class="about-us-card">
+            <h2><i class="fas fa-info-circle"></i> Our Vision</h2>
+            <p><strong>Welcome to Our Free Fire Tournament Community</strong></p>
+
+            <p>हमारा मकसद simple है – <em>गेमिंग को सिर्फ गेमिंग न रखना, बल्कि उसे एक competitive और entertaining experience बनाना।</em>  
+            Free Fire आज सिर्फ एक mobile game नहीं बल्कि लाखों लोगों का जुनून बन चुका है। Squad vs Squad की लड़ाइयाँ सिर्फ एक match नहीं बल्कि strategy, teamwork और dedication की असली पहचान हैं। हम इसी जोश और energy को एक platform के ज़रिए सभी gamers तक पहुँचाना चाहते हैं।</p>
+
+            <p><strong>हमारा Vision</strong></p>
+            <p>हम चाहते हैं कि हर gamer, चाहे वो beginner हो या pro, उसे एक ऐसा platform मिले जहाँ वह खुद को challenge कर सके, नए players से मिले, और अपने skills को level-up करे। Gaming अब सिर्फ time-pass नहीं रहा—यह career, passion और community building का हिस्सा बन चुका है।  
+            इसीलिए हमने यह <em>Free Fire Tournament</em> organize करना शुरू किया, जहाँ हर squad को मौका मिलता है खुद को prove करने का।</p>
+
+            <p><strong>हम क्या करते हैं?</strong></p>
+            <p>- <b>Regular Tournaments</b>: हम squad vs squad tournaments organize करते हैं ताकि हर team को बार-बार मौका मिले खेलने और जीतने का।<br>
+            - <b>Fair Gameplay</b>: Rules और guidelines clear हैं, जिससे cheating, hacks और unfair advantage जैसी चीज़ों को पूरी तरह avoid किया जाता है।<br>
+            - <b>Rewards & Recognition</b>: जीतने वालों को न सिर्फ rewards दिए जाते हैं, बल्कि उन्हें हमारी community में highlight किया जाता है। यहाँ सिर्फ जीत ही नहीं बल्कि performance और sportsmanship भी matter करता है।<br>
+            - <b>Community Engagement</b>: यह सिर्फ एक tournament platform नहीं बल्कि एक family है, जहाँ हर gamer जुड़कर दोस्त बना सकता है, discussions कर सकता है और gaming के future पर ideas share कर सकता है।</p>
+
+            <p><strong>हमारा मिशन</strong></p>
+            <p>हम मानते हैं कि हर player में एक hidden potential होता है। Free Fire जैसे battle royale games सिर्फ हाथ की speed का test नहीं बल्कि दिमाग की strategy, patience और teamwork का भी test हैं। हमारा mission है gamers को एक ऐसा environment देना जहाँ वे खुद को बार-बार test करें, improve करें और एक नई पहचान बनाएँ।</p>
+
+            <p><strong>Squad vs Squad क्यों?</strong></p>
+            <p>Squad vs Squad format को हमने इसलिए चुना क्योंकि:<br>
+            1. यह pure teamwork पर depend करता है।<br>
+            2. इसमें individual skill और squad coordination दोनों equally important हैं।<br>
+            3. हर player का एक role होता है – चाहे entry fragger हो, support player हो या strategist।<br>
+            4. Audience को देखने में भी मज़ा आता है क्योंकि यहाँ unpredictability और thrill दोनों high होते हैं।</p>
+
+            <p><strong>हमारे Values</strong></p>
+            <p>- <b>Transparency</b> – सब rules और results साफ-साफ सामने रखे जाते हैं।<br>
+            - <b>Equality</b> – हर squad को बराबर chance और platform दिया जाता है।<br>
+            - <b>Respect</b> – Win या lose, हर player deserve करता है respect।<br>
+            - <b>Growth</b> – हर tournament से सीखने और आगे बढ़ने का मौका मिलता है।</p>
+
+            <p><strong>क्यों Join करें हमारा Tournament?</strong></p>
+            <p>- Competitive environment में खेलकर real eSports का taste मिलेगा।<br>
+            - Rewards, नाम और fame पाने का golden chance।<br>
+            - एक ऐसी community का हिस्सा बनना जो सिर्फ game नहीं बल्कि दोस्ती, teamwork और respect को value करती है।<br>
+            - Future में बड़े-बड़े sponsored tournaments तक पहुँचने के लिए यह एक stepping stone बन सकता है।</p>
+
+            <p><strong>हमारा वादा</strong></p>
+            <p>हम वादा करते हैं कि यह platform हमेशा gamers के लिए रहेगा—by the gamers, for the gamers। हमारा पूरा focus fair gameplay, smooth management और maximum entertainment पर रहता है।</p>
+
+            <p><strong>Conclusion</strong></p>
+            <p>हमारे लिए यह tournament सिर्फ gaming नहीं बल्कि एक movement है। यह एक शुरुआत है उस future की जहाँ हर gamer को उसकी मेहनत और skill के लिए recognition मिलेगा। अगर आपके अंदर fire है, तो यह platform आपके लिए है।</p>
+
+            <p><b>Join us. Play with passion. Fight with honor. Win with pride.</b></p>
+            
+            <a href="index.html" class="back-home-button">
+                <span class="button-icon"><i class="fas fa-home"></i></span>
+                <span class="button-text">Back to Home</span>
+            </a>
+        </section>
+    </main>
+    <footer class="app-footer">
+        <p>&copy; 2025 ULTIMATE BATTLE. All rights reserved.</p>
+        <a href="about.html" class="footer-link-button"><i class="fas fa-info-circle"></i> About Us</a>
+        <a href="https://chat.whatsapp.com/FHeYVSKOiOwJTgdJwiYTuD?mode=ac_t" target="_blank" class="footer-link-button whatsapp-button">
+            <i class="fab fa-whatsapp"></i> Join us on WhatsApp
+        </a>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTopBtn" title="Go to top"><i class="fas fa-chevron-up"></i></button>
+
+    <script>
+        // Back to top button functionality
+        const backToTopBtn = document.getElementById('backToTopBtn');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.style.display = 'block';
+            } else {
+                backToTopBtn.style.display = 'none';
+            }
+        });
+        
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html>
